@@ -425,3 +425,11 @@ h2{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:
 .reveal.is-in{transition:transform .35s var(--ease),border-color .3s,box-shadow .35s,background .3s,opacity .8s var(--ease)}
 .res>div{display:flex}.res__c{flex:1}
 .toggle__l{font:inherit;padding:0;cursor:pointer}
+
+/* LiquidEther cursor effect (decorative; sits behind content, never blocks clicks) */
+.ether{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.6;
+  -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
+.hero__glow{z-index:0}
+.hero__inner{z-index:1}
+.cta__box>.ether{z-index:-1;mask-image:none;-webkit-mask-image:none;opacity:.7}
+.cta__box>h2,.cta__box>p,.cta__box>.hero__ctas{position:relative}

@@ -1,5 +1,6 @@
 import Icon from './Icon.jsx';
 import Reveal from './Reveal.jsx';
+import Ether from './Ether.jsx';
 import { ModalLink } from './Modal.jsx';
 
 const Av = ({ c, children }) => <i style={{ '--c': c }}>{children}</i>;
@@ -71,6 +72,7 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero__glow" aria-hidden="true" />
+      <Ether />
       <div className="container hero__inner">
         <Reveal as="a" className="badge" href="#features">
           <span className="badge__dot" />AI-powered workflows for modern teams<Icon name="arrow" size={14} />
