@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlowPilot — AI workflow automation for modern teams</title>
+  <meta name="description" content="FlowPilot is the AI-powered productivity platform that automates repetitive work, manages projects and keeps your team in sync.">
+  <meta name="theme-color" content="#070b16">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f7cff'/%3E%3Cpath d='M9 22l5-12 3 7 2-4 4 9' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
+    <symbol id="i-logo" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="url(#g-brand)"/><path d="M9 22l5-12 3 7 2-4 4 9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 20 20"><path d="M4 10.5l3.5 3.5L16 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-tasks" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 12.5l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 19c.5-3 2.7-4.8 5.5-4.8s5 1.8 5.5 4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="17" cy="8" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16.5 13.6c2.4.2 3.6 1.9 4 4.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V5M4 20h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 15l3.5-4 3 2.5L19 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6.5 8h11v3.5a5.5 5.5 0 01-11 0zM12 17v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v5h5M10 13h6M10 17h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 20 20"><path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM18.5 15l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- 1. NAVIGATION -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a class="brand" href="#top" aria-label="FlowPilot home"><svg width="30" height="30"><use href="#i-logo"/></svg><span>FlowPilot</span></a>
+    <nav class="nav__links" id="nav-menu" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#resources">Resources</a>
+      <a href="#" data-modal="login" class="nav__login">Login</a>
+      <a href="#" data-modal="trial" class="btn btn--primary btn--sm nav__cta-mobile">Start Free Trial</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="#" data-modal="trial" class="btn btn--primary btn--sm nav__cta">Start Free Trial</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div id="top"></div>
+
+<!-- 2. HERO -->
+<section class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <a class="badge reveal" href="#features"><span class="badge__dot"></span>AI-powered workflows for modern teams<svg width="14" height="14"><use href="#i-arrow"/></svg></a>
+    <h1 class="reveal" style="--d:.05s">Automate your work.<br><span class="grad">Focus on what matters.</span></h1>
+    <p class="hero__sub reveal" style="--d:.1s">FlowPilot connects your tools, learns how your team works and automates the busywork — from task routing to weekly reports — so every project keeps moving without another status meeting.</p>
+    <div class="hero__ctas reveal" style="--d:.15s">
+      <a href="#" data-modal="trial" class="btn btn--primary btn--lg">Start Free Trial</a>
+      <a href="#features" class="btn btn--ghost btn--lg">Explore Features</a>
+    </div>
+    <p class="hero__note reveal" style="--d:.2s"><svg width="16" height="16"><use href="#i-check"/></svg> No credit card required · 14-day free trial</p>
+
+    <!-- Hero product mockup -->
+    <div class="mock mock--hero reveal" style="--d:.25s" role="img" aria-label="FlowPilot dashboard showing tasks, an automation flow and team activity">
+      <div class="mock__bar"><i></i><i></i><i></i><span class="mock__url">app.flowpilot.io/workspace/launch-q4</span></div>
+      <div class="app">
+        <aside class="app__side">
+          <div class="app__ws"><b>A</b><span>Acme Studio</span></div>
+          <ul>
+            <li class="on"><svg width="16" height="16"><use href="#i-tasks"/></svg>My tasks</li>
+            <li><svg width="16" height="16"><use href="#i-bolt"/></svg>Automations</li>
+            <li><svg width="16" height="16"><use href="#i-chart"/></svg>Analytics</li>
+            <li><svg width="16" height="16"><use href="#i-users"/></svg>Team</li>
+            <li><svg width="16" height="16"><use href="#i-doc"/></svg>Reports</li>
+          </ul>
+          <div class="app__ai"><svg width="16" height="16"><use href="#i-spark"/></svg><span>FlowPilot AI saved your team <b>14h</b> this week</span></div>
+        </aside>
+        <div class="app__main">
+          <div class="app__head"><h4>Q4 Product Launch</h4><div class="avatars"><i style="--c:#4f7cff">MR</i><i style="--c:#8b5cf6">JL</i><i style="--c:#10b981">SK</i><i class="more">+5</i></div></div>
+          <div class="app__cols">
+            <div class="panel">
+              <div class="panel__t">Tasks <em>12 open</em></div>
+              <ul class="tasks">
+                <li class="done"><span class="ck"></span>Finalize launch messaging<small class="tag tag--g">Done</small></li>
+                <li><span class="ck"></span>Design review: onboarding flow<small class="tag tag--b">In review</small></li>
+                <li><span class="ck"></span>QA regression pass — v2.4<small class="tag tag--v">AI assigned</small></li>
+                <li><span class="ck"></span>Publish changelog &amp; notify customers<small class="tag tag--o">Due today</small></li>
+              </ul>
+              <div class="prog"><div><span>Sprint progress</span><b>68%</b></div><div class="bar"><span style="--w:68%"></span></div></div>
+            </div>
+            <div class="panel panel--flow">
+              <div class="panel__t">Active automation <em class="live">Running</em></div>
+              <div class="miniflow">
+                <div class="mf"><svg width="14" height="14"><use href="#i-bolt"/></svg>PR merged</div>
+                <span class="mf__line"></span>
+                <div class="mf mf--ai"><svg width="14" height="14"><use href="#i-spark"/></svg>Summarize changes</div>
+                <span class="mf__line"></span>
+                <div class="mf"><svg width="14" height="14"><use href="#i-doc"/></svg>Post to #releases</div>
+              </div>
+              <div class="panel__t panel__t--sp">Team activity</div>
+              <ul class="feed">
+                <li><i style="--c:#10b981">SK</i><span><b>Sara</b> completed <u>API docs</u></span><small>2m</small></li>
+                <li><i style="--c:#8b5cf6">JL</i><span><b>Jon</b> commented on <u>Onboarding</u></span><small>6m</small></li>
+                <li><i style="--c:#4f7cff"><svg width="12" height="12"><use href="#i-spark"/></svg></i><span><b>FlowPilot</b> sent weekly report</span><small>9m</small></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. SOCIAL PROOF -->
+<section class="proof" aria-labelledby="proof-t">
+  <div class="container">
+    <p class="eyebrow-sub" id="proof-t">Trusted by modern teams</p>
+    <ul class="logos" aria-label="Customer logos">
+      <li><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="12" cy="12" r="3.4" fill="currentColor"/></svg>Northwind</li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 3l9 16H3z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>Lumina</li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5" fill="currentColor"/></svg>Aperture</li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24"><path d="M4 6l8 13 8-13" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Vertex</li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>Helix</li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="8" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="16" cy="12" r="5" fill="currentColor" opacity=".55"/></svg>Orbitly</li>
+    </ul>
+    <dl class="stats">
+      <div class="stat"><dt>Active users</dt><dd><span data-count="10000" data-suffix="+">10,000+</span></dd></div>
+      <div class="stat"><dt>Tasks automated</dt><dd><span data-count="2.4" data-decimals="1" data-suffix="M+">2.4M+</span></dd></div>
+      <div class="stat"><dt>Uptime, last 12 months</dt><dd><span data-count="99.9" data-decimals="1" data-suffix="%">99.9%</span></dd></div>
+      <div class="stat"><dt>Avg. hours saved / week</dt><dd><span data-count="11" data-suffix="h">11h</span></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 4. FEATURES -->
+<section class="section" id="features">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="eyebrow">Features</p>
+      <h2>Everything your team needs to move faster.</h2>
+      <p>One workspace for planning, automating and shipping — with AI doing the repetitive parts in the background.</p>
+    </header>
+
+    <div class="bento">
+      <article class="card card--a reveal">
+        <div class="card__txt">
+          <span class="ico"><svg width="22" height="22"><use href="#i-bolt"/></svg></span>
+          <h3>AI Workflow Automation</h3>
+          <p>Describe a process in plain English and FlowPilot builds the trigger, conditions and actions for you. Refine it visually whenever you like.</p>
+        </div>
+        <div class="snip snip--prompt">
+          <div class="prompt"><svg width="16" height="16"><use href="#i-spark"/></svg><span class="typing">When a bug is labeled “critical”, alert #oncall and open a Jira ticket</span></div>
+          <div class="chips"><span>Trigger: GitHub label</span><span>Action: Slack</span><span>Action: Jira</span></div>
+        </div>
+      </article>
+
+      <article class="card card--b reveal" style="--d:.06s">
+        <span class="ico"><svg width="22" height="22"><use href="#i-tasks"/></svg></span>
+        <h3>Smart Task Management</h3>
+        <p>Priorities, owners and due dates suggested automatically.</p>
+        <ul class="snip snip--tasks">
+          <li><span class="ck on"></span>Prep roadmap review<small>High</small></li>
+          <li><span class="ck"></span>Update pricing page<small class="m">Med</small></li>
+          <li><span class="ck"></span>Customer interview notes<small class="l">Low</small></li>
+        </ul>
+      </article>
+
+      <article class="card card--c reveal">
+        <span class="ico"><svg width="22" height="22"><use href="#i-users"/></svg></span>
+        <h3>Real-Time Team Collaboration</h3>
+        <p>Comment, mention and co-edit without leaving the task.</p>
+        <div class="snip snip--collab">
+          <div class="avatars"><i style="--c:#4f7cff">MR</i><i style="--c:#8b5cf6">JL</i><i style="--c:#10b981">SK</i></div>
+          <span class="cursor">Jon is typing<b>.</b><b>.</b><b>.</b></span>
+        </div>
+      </article>
+
+      <article class="card card--d reveal" style="--d:.06s">
+        <span class="ico"><svg width="22" height="22"><use href="#i-chart"/></svg></span>
+        <h3>Project Analytics</h3>
+        <p>See velocity, bottlenecks and workload at a glance.</p>
+        <div class="snip snip--bars" aria-hidden="true"><i style="--h:38%"></i><i style="--h:55%"></i><i style="--h:44%"></i><i style="--h:72%"></i><i style="--h:60%"></i><i style="--h:88%"></i><i style="--h:80%"></i></div>
+      </article>
+
+      <article class="card card--e reveal" style="--d:.12s">
+        <span class="ico"><svg width="22" height="22"><use href="#i-plug"/></svg></span>
+        <h3>Custom Integrations</h3>
+        <p>Connect 120+ apps or call our API and webhooks for the rest.</p>
+        <div class="snip snip--code"><code><span class="k">POST</span> /v1/workflows/<span class="s">run</span><br><span class="c">{ "trigger": "deploy.done" }</span></code></div>
+      </article>
+
+      <article class="card card--f reveal">
+        <div class="card__txt">
+          <span class="ico"><svg width="22" height="22"><use href="#i-doc"/></svg></span>
+          <h3>Automated Reports</h3>
+          <p>Weekly status updates, client summaries and exec dashboards — written, formatted and delivered on schedule, with the numbers already pulled in.</p>
+        </div>
+        <div class="snip snip--report">
+          <div class="rep__h"><b>Weekly Summary</b><small>Mon 9:00 · Auto-sent to 14 people</small></div>
+          <div class="rep__row"><span>Tasks completed</span><b>47 <em>▲ 12%</em></b></div>
+          <div class="rep__row"><span>On-time delivery</span><b>94% <em>▲ 3%</em></b></div>
+          <div class="rep__row"><span>Blocked items</span><b>2 <em class="dn">▼ 5</em></b></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PRODUCT SHOWCASES -->
+<section class="section section--alt" id="solutions">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="eyebrow">Solutions</p>
+      <h2>See how FlowPilot works.</h2>
+      <p>Built for operations, product and engineering teams that are tired of copy-pasting between tools.</p>
+    </header>
+
+    <!-- Workflow builder -->
+    <div class="show">
+      <div class="show__txt reveal">
+        <p class="eyebrow">AI Workflow Builder</p>
+        <h3>Turn a sentence into a working automation.</h3>
+        <p>Drag, drop or just describe it. FlowPilot suggests the next best step, tests the run before you publish and shows you exactly what happened on every execution.</p>
+        <ul class="ticks">
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Conditional branching and approvals</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Built-in AI steps: classify, summarize, draft</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Version history and one-click rollback</li>
+        </ul>
+      </div>
+      <div class="mock reveal" style="--d:.08s" role="img" aria-label="Visual workflow editor with connected automation steps">
+        <div class="mock__bar"><i></i><i></i><i></i><span class="mock__url">Workflow · Triage support requests</span><span class="pub">Publish</span></div>
+        <div class="flow-wrap">
+          <div class="flow">
+            <svg class="flow__svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M12 50 C 25 50, 25 50, 38 50"/>
+              <path d="M38 50 C 50 50, 50 25, 62 25"/>
+              <path d="M38 50 C 50 50, 50 75, 62 75"/>
+              <path d="M62 25 C 75 25, 75 25, 87 25"/>
+              <path d="M62 75 C 75 75, 75 75, 87 75"/>
+            </svg>
+            <div class="node node--t" style="left:12%;top:50%"><span class="node__k">Trigger</span><b>New support email</b></div>
+            <div class="node node--ai" style="left:38%;top:50%"><span class="node__k"><svg width="11" height="11"><use href="#i-spark"/></svg> AI step</span><b>Classify urgency</b></div>
+            <div class="node" style="left:62%;top:25%"><span class="node__k">If urgent</span><b>Alert #support</b></div>
+            <div class="node" style="left:62%;top:75%"><span class="node__k">Otherwise</span><b>Create Jira ticket</b></div>
+            <div class="node" style="left:87%;top:25%"><span class="node__k">Action</span><b>Assign on-call</b></div>
+            <div class="node" style="left:87%;top:75%"><span class="node__k">Action</span><b>Log to Notion</b></div>
+          </div>
+        </div>
+        <div class="flow-foot"><span class="live">Test run passed</span><span>6 steps · avg. 1.8s</span></div>
+      </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="show show--rev">
+      <div class="show__txt reveal">
+        <p class="eyebrow">Smart Dashboard</p>
+        <h3>Know where every project stands — without asking.</h3>
+        <p>Live progress, workload and automation health in a single view. FlowPilot flags risks before deadlines slip and explains why in plain language.</p>
+        <ul class="ticks">
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Burn-up charts and forecasted delivery dates</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Per-person workload balancing</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Monitor every active workflow in real time</li>
+        </ul>
+      </div>
+      <div class="mock reveal" style="--d:.08s" role="img" aria-label="Analytics dashboard with project progress, productivity metrics and workflow status">
+        <div class="mock__bar"><i></i><i></i><i></i><span class="mock__url">Dashboard · This month</span></div>
+        <div class="dash">
+          <div class="kpis">
+            <div class="kpi"><small>Productivity</small><b>+23%</b><em>▲ vs last month</em></div>
+            <div class="kpi"><small>Tasks done</small><b>312</b><em>▲ 48 this week</em></div>
+            <div class="kpi"><small>Hours saved</small><b>186h</b><em>▲ via automation</em></div>
+          </div>
+          <div class="dash__grid">
+            <div class="panel">
+              <div class="panel__t">Velocity <em>last 8 weeks</em></div>
+              <svg class="chart" viewBox="0 0 320 120" preserveAspectRatio="none" aria-hidden="true">
+                <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4f7cff" stop-opacity=".35"/><stop offset="1" stop-color="#4f7cff" stop-opacity="0"/></linearGradient></defs>
+                <path class="chart__area" d="M0 95 L45 80 L91 86 L137 58 L183 66 L229 38 L275 44 L320 18 L320 120 L0 120Z" fill="url(#area)"/>
+                <path class="chart__line" d="M0 95 L45 80 L91 86 L137 58 L183 66 L229 38 L275 44 L320 18" fill="none" stroke="#6c93ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" pathLength="1"/>
+              </svg>
+            </div>
+            <div class="panel">
+              <div class="panel__t">Projects</div>
+              <ul class="projects">
+                <li><span>Website redesign</span><div class="bar"><span style="--w:82%"></span></div><b>82%</b></li>
+                <li><span>Mobile app v2</span><div class="bar bar--v"><span style="--w:56%"></span></div><b>56%</b></li>
+                <li><span>Partner portal</span><div class="bar"><span style="--w:31%"></span></div><b>31%</b></li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel__t">Active workflows <em>8 running</em></div>
+            <ul class="wf">
+              <li><span class="dot dot--g"></span>Triage support requests<small>1,204 runs</small></li>
+              <li><span class="dot dot--g"></span>Weekly exec report<small>Next: Mon 9:00</small></li>
+              <li><span class="dot dot--y"></span>Onboard new hires<small>Awaiting approval</small></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collaboration -->
+    <div class="show">
+      <div class="show__txt reveal">
+        <p class="eyebrow">Team Collaboration</p>
+        <h3>Everyone on the same page, in real time.</h3>
+        <p>Assign work, discuss it where it lives and see who's doing what — live. Context stays attached to the task, so nothing gets lost in a chat thread.</p>
+        <ul class="ticks">
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>@mentions, threads and file previews</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Live presence and activity timeline</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>AI summaries for long discussions</li>
+        </ul>
+      </div>
+      <div class="mock reveal" style="--d:.08s" role="img" aria-label="Task with assignments, comments and live team activity">
+        <div class="mock__bar"><i></i><i></i><i></i><span class="mock__url">Task · Redesign onboarding flow</span></div>
+        <div class="collab">
+          <div class="collab__main">
+            <div class="collab__title"><span class="tag tag--b">In progress</span><h4>Redesign onboarding flow</h4></div>
+            <div class="collab__meta"><span>Assignee <i style="--c:#8b5cf6">JL</i></span><span>Due <b>Oct 14</b></span><span>Priority <b class="hi">High</b></span></div>
+            <div class="ai-sum"><svg width="14" height="14"><use href="#i-spark"/></svg><span><b>AI summary:</b> Team agreed to cut onboarding from 6 steps to 4. Waiting on legal copy.</span></div>
+            <ul class="comments">
+              <li><i style="--c:#10b981">SK</i><div><b>Sara Kim <small>10:24</small></b><p>Updated the empty states — can someone review the copy? <u>@Jon</u></p></div></li>
+              <li><i style="--c:#8b5cf6">JL</i><div><b>Jon Lee <small>10:31</small></b><p>On it. The 4-step version tests much better with new users.</p></div></li>
+              <li class="typing-row"><i style="--c:#4f7cff">MR</i><div><b>Maya Reyes</b><p class="dots"><span></span><span></span><span></span></p></div></li>
+            </ul>
+          </div>
+          <aside class="collab__side">
+            <div class="panel__t">Online now <em class="live">3</em></div>
+            <ul class="presence">
+              <li><i style="--c:#4f7cff">MR</i>Maya<small>Editing</small></li>
+              <li><i style="--c:#8b5cf6">JL</i>Jon<small>Commenting</small></li>
+              <li><i style="--c:#10b981">SK</i>Sara<small>Viewing</small></li>
+            </ul>
+            <div class="panel__t panel__t--sp">Timeline</div>
+            <ul class="timeline">
+              <li>Sara completed 2 subtasks</li>
+              <li>FlowPilot reassigned QA</li>
+              <li>Jon changed due date</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="eyebrow">How it works</p>
+      <h2>From setup to autopilot in three steps.</h2>
+      <p>Most teams ship their first automation in under 15 minutes.</p>
+    </header>
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="step__n">1</span>
+        <h3>Connect your tools</h3>
+        <p>Link Slack, GitHub, Google Drive and more with one-click OAuth. FlowPilot maps your projects and people automatically.</p>
+        <div class="step__vis"><span class="pill">Slack ✓</span><span class="pill">GitHub ✓</span><span class="pill">Drive ✓</span></div>
+      </li>
+      <li class="step reveal" style="--d:.1s">
+        <span class="step__n">2</span>
+        <h3>Build your workflow</h3>
+        <p>Describe what you want or start from a template. Preview every step with real data before going live.</p>
+        <div class="step__vis"><span class="pill pill--ai"><svg width="12" height="12"><use href="#i-spark"/></svg> Describe it</span><span class="pill">Test run</span></div>
+      </li>
+      <li class="step reveal" style="--d:.2s">
+        <span class="step__n">3</span>
+        <h3>Let FlowPilot automate the work</h3>
+        <p>Your workflow runs 24/7. Get alerts only when a human decision is needed — and a clear log of everything else.</p>
+        <div class="step__vis"><span class="pill pill--live">● Running</span><span class="pill">1,204 runs</span></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 7. INTEGRATIONS -->
+<section class="section section--alt" id="integrations">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="eyebrow">Integrations</p>
+      <h2>Works with the stack you already use.</h2>
+      <p>No migrations, no rip-and-replace. FlowPilot plugs into your existing tools in minutes.</p>
+    </header>
+    <ul class="integ reveal">
+      <li><svg viewBox="0 0 48 48" width="40" height="40" role="img" aria-label="Slack"><rect x="10" y="20" width="10" height="5" rx="2.5" fill="#36c5f0"/><rect x="20" y="10" width="5" height="10" rx="2.5" fill="#2eb67d" transform="translate(0 0)"/><rect x="28" y="20" width="10" height="5" rx="2.5" fill="#ecb22e"/><rect x="23" y="28" width="5" height="10" rx="2.5" fill="#e01e5a"/><circle cx="18" cy="28" r="2.5" fill="#36c5f0"/><circle cx="30" cy="17" r="2.5" fill="#ecb22e"/></svg><span>Slack</span></li>
+      <li><svg viewBox="0 0 48 48" width="40" height="40" role="img" aria-label="Google Drive"><path d="M17 8h14l12 21H29z" fill="#fbbc04"/><path d="M17 8L5 29l7 11 12-21z" fill="#0f9d58"/><path d="M12 40h24l7-11H19z" fill="#4285f4"/></svg><span>Google Drive</span></li>
+      <li><svg viewBox="0 0 48 48" width="40" height="40" role="img" aria-label="Notion"><rect x="8" y="7" width="32" height="34" rx="6" fill="#f5f5f5"/><path d="M17 33V15h3l8 12V15h3v18h-3l-8-12v12z" fill="#111"/></svg><span>Notion</span></li>
+      <li><svg viewBox="0 0 48 48" width="40" height="40" role="img" aria-label="GitHub"><circle cx="24" cy="24" r="17" fill="#e8ecf5"/><circle cx="18" cy="31" r="2.4" fill="#0b1020"/><circle cx="18" cy="17" r="2.4" fill="#0b1020"/><circle cx="30" cy="21" r="2.4" fill="#0b1020"/><path d="M18 19.5v9M30 23.4c0 4-6 3-12 5.6" fill="none" stroke="#0b1020" stroke-width="2"/></svg><span>GitHub</span></li>
+      <li><svg viewBox="0 0 48 48" width="40" height="40" role="img" aria-label="Microsoft Teams"><rect x="6" y="10" width="26" height="28" rx="6" fill="#5b5fc7"/><rect x="26" y="16" width="16" height="18" rx="5" fill="#7b83eb"/><path d="M13 19h12v3h-4.5v11h-3V22H13z" fill="#fff"/></svg><span>Microsoft Teams</span></li>
+      <li><svg viewBox="0 0 48 48" width="40" height="40" role="img" aria-label="Jira"><path d="M24 6l14 14-7 7-7-7-7 7-7-7z" fill="#2684ff"/><path d="M24 20l7 7-7 7-7-7z" fill="#1d5fd0"/><path d="M24 30l7 7-7 5-7-5z" fill="#4c9aff" opacity=".9"/></svg><span>Jira</span></li>
+    </ul>
+    <p class="integ__more reveal">+ 120 more, including HubSpot, Linear, Salesforce, Zendesk and Zapier. <a href="#resources">Browse the full directory <svg width="14" height="14"><use href="#i-arrow"/></svg></a></p>
+  </div>
+</section>
+
+<!-- 8. TESTIMONIALS -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="eyebrow">Customers</p>
+      <h2>Teams ship more with FlowPilot.</h2>
+    </header>
+    <div class="quotes">
+      <figure class="quote reveal">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“FlowPilot removed hours of repetitive work from our weekly process. Our team can finally focus on the work that actually moves projects forward.”</blockquote>
+        <figcaption><i style="--c:#4f7cff">DP</i><div><b>Daniela Prieto</b><span>Head of Operations, Northwind</span></div></figcaption>
+      </figure>
+      <figure class="quote reveal" style="--d:.08s">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“We replaced three tools and a mountain of spreadsheets. Status reports now write themselves and our sprint reviews take half the time.”</blockquote>
+        <figcaption><i style="--c:#8b5cf6">MO</i><div><b>Marcus Okafor</b><span>VP Product, Lumina</span></div></figcaption>
+      </figure>
+      <figure class="quote reveal" style="--d:.16s">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“The AI workflow builder is the real deal. I described our incident process in two sentences and it had a working automation ready to test.”</blockquote>
+        <figcaption><i style="--c:#10b981">PN</i><div><b>Priya Nair</b><span>Engineering Manager, Aperture</span></div></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 9. PRICING -->
+<section class="section section--alt" id="pricing">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="eyebrow">Pricing</p>
+      <h2>Simple pricing that scales with your team.</h2>
+      <p>Start free for 14 days. Upgrade, downgrade or cancel anytime.</p>
+    </header>
+
+    <div class="toggle reveal" role="group" aria-label="Billing period">
+      <span class="toggle__l is-on" id="lbl-m">Monthly</span>
+      <button class="switch" id="billing" role="switch" aria-checked="false" aria-label="Bill yearly and save 20 percent"><span></span></button>
+      <span class="toggle__l" id="lbl-y">Yearly <em class="save">Save 20%</em></span>
+    </div>
+
+    <div class="plans">
+      <article class="plan reveal">
+        <h3>Starter</h3>
+        <p class="plan__d">For small teams getting organized.</p>
+        <p class="price"><span class="cur">$</span><span class="amt" data-m="9" data-y="7">9</span><span class="per">/user/mo</span></p>
+        <p class="bill" data-m="Billed monthly" data-y="Billed yearly · $84/user">Billed monthly</p>
+        <a href="#" data-modal="trial" class="btn btn--ghost btn--block">Start Free Trial</a>
+        <ul class="plan__f">
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Up to 5 users</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>10 automated workflows</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Basic analytics</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Task management</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Email support</li>
+        </ul>
+      </article>
+
+      <article class="plan plan--pop reveal" style="--d:.08s">
+        <span class="plan__badge">Most Popular</span>
+        <h3>Pro</h3>
+        <p class="plan__d">For growing teams that automate everything.</p>
+        <p class="price"><span class="cur">$</span><span class="amt" data-m="24" data-y="19">24</span><span class="per">/user/mo</span></p>
+        <p class="bill" data-m="Billed monthly" data-y="Billed yearly · $228/user">Billed monthly</p>
+        <a href="#" data-modal="trial" class="btn btn--primary btn--block">Start Free Trial</a>
+        <ul class="plan__f">
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Up to 20 users</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Unlimited workflows</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Advanced analytics</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>AI workflow builder</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Custom integrations</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Priority support</li>
+        </ul>
+      </article>
+
+      <article class="plan reveal" style="--d:.16s">
+        <h3>Business</h3>
+        <p class="plan__d">For organizations that need scale and control.</p>
+        <p class="price"><span class="cur">$</span><span class="amt" data-m="59" data-y="47">59</span><span class="per">/user/mo</span></p>
+        <p class="bill" data-m="Billed monthly" data-y="Billed yearly · $564/user">Billed monthly</p>
+        <a href="#" data-modal="trial" class="btn btn--ghost btn--block">Start Free Trial</a>
+        <ul class="plan__f">
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Unlimited users &amp; workflows</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Advanced AI automation</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Team analytics</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Enterprise integrations</li>
+          <li><svg width="18" height="18"><use href="#i-check"/></svg>Dedicated support</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="section section--tight" id="resources">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="eyebrow">Resources</p>
+      <h2>Learn, borrow and get inspired.</h2>
+    </header>
+    <div class="res">
+      <a class="res__c reveal" href="#" data-modal="soon"><span class="ico"><svg width="22" height="22"><use href="#i-doc"/></svg></span><h3>Automation playbook</h3><p>40 proven workflows for ops, product and engineering teams.</p><span class="more">Read the guide <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+      <a class="res__c reveal" style="--d:.08s" href="#" data-modal="soon"><span class="ico"><svg width="22" height="22"><use href="#i-bolt"/></svg></span><h3>Template library</h3><p>Start from ready-made workflows and customize them in minutes.</p><span class="more">Browse templates <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+      <a class="res__c reveal" style="--d:.16s" href="#" data-modal="soon"><span class="ico"><svg width="22" height="22"><use href="#i-spark"/></svg></span><h3>What's new</h3><p>Product updates, release notes and what we're building next.</p><span class="more">View changelog <svg width="14" height="14"><use href="#i-arrow"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 10. FINAL CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta__box reveal">
+      <div class="cta__bg" aria-hidden="true"></div>
+      <h2>Ready to automate the way your team works?</h2>
+      <p>Start building smarter workflows today. Set up in minutes, see results this week — no credit card required.</p>
+      <div class="hero__ctas">
+        <a href="#" data-modal="trial" class="btn btn--primary btn--lg">Start Free Trial</a>
+        <a href="#" data-modal="demo" class="btn btn--ghost btn--lg">Book a Demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="brand" href="#top" aria-label="FlowPilot home"><svg width="30" height="30"><use href="#i-logo"/></svg><span>FlowPilot</span></a>
+        <p>FlowPilot is the AI-powered workspace that helps teams manage projects, automate repetitive work and collaborate in one place.</p>
+        <ul class="social" aria-label="Social media">
+          <li><a href="#" data-modal="soon" aria-label="X (Twitter)"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></a></li>
+          <li><a href="#" data-modal="soon" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11v6M8 7.5v.1M12 17v-6m0 2.5c0-1.5 1-2.5 2.3-2.5S16 12 16 13.5V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></a></li>
+          <li><a href="#" data-modal="soon" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="6" r="2.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="9" r="2.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 8.2v7.6M18 11.2c0 4-8 2-12 5" stroke="currentColor" stroke-width="2" fill="none"/></svg></a></li>
+          <li><a href="#" data-modal="soon" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.5 9.5v5l4-2.5z" fill="currentColor"/></svg></a></li>
+        </ul>
+      </div>
+      <nav class="footer__cols" aria-label="Footer">
+        <div><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#integrations">Integrations</a></li><li><a href="#how">How it works</a></li></ul></div>
+        <div><h4>Solutions</h4><ul><li><a href="#solutions">Operations</a></li><li><a href="#solutions">Product teams</a></li><li><a href="#solutions">Engineering</a></li><li><a href="#solutions">Agencies</a></li></ul></div>
+        <div><h4>Resources</h4><ul><li><a href="#resources">Guides</a></li><li><a href="#resources">Templates</a></li><li><a href="#resources">Changelog</a></li><li><a href="#" data-modal="soon">Help center</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="#" data-modal="soon">About</a></li><li><a href="#" data-modal="soon">Careers</a></li><li><a href="#" data-modal="demo">Contact</a></li><li><a href="#testimonials">Customers</a></li></ul></div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p>© <span id="year">2026</span> FlowPilot, Inc. All rights reserved.</p>
+      <ul><li><a href="#" data-modal="soon">Privacy Policy</a></li><li><a href="#" data-modal="soon">Terms of Service</a></li><li><a href="#" data-modal="demo">Contact</a></li></ul>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<dialog class="modal" id="modal" aria-labelledby="modal-title">
+  <form method="dialog" class="modal__close-wrap"><button class="modal__close" aria-label="Close dialog">×</button></form>
+  <div class="modal__body" id="modal-form-wrap">
+    <svg width="36" height="36"><use href="#i-logo"/></svg>
+    <h2 id="modal-title">Start your free trial</h2>
+    <p id="modal-sub">14 days of Pro. No credit card required.</p>
+    <form id="modal-form" novalidate>
+      <label for="m-email">Work email</label>
+      <input id="m-email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+      <div id="m-pass-wrap" hidden>
+        <label for="m-pass">Password</label>
+        <input id="m-pass" name="password" type="password" autocomplete="current-password" placeholder="••••••••">
+      </div>
+      <p class="err" id="m-err" role="alert" hidden>Please enter a valid email address.</p>
+      <button type="submit" class="btn btn--primary btn--block" id="m-submit">Start Free Trial</button>
+    </form>
+  </div>
+  <div class="modal__body modal__ok" id="modal-ok" hidden>
+    <span class="okc"><svg width="26" height="26"><use href="#i-check"/></svg></span>
+    <h2 id="ok-title">You're all set!</h2>
+    <p id="ok-sub">Check your inbox for next steps.</p>
+    <button class="btn btn--ghost btn--block" id="ok-close" type="button">Close</button>
+  </div>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
