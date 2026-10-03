@@ -12,11 +12,13 @@ import Pricing from './components/Pricing.jsx';
 import Resources from './components/Resources.jsx';
 import FinalCta from './components/FinalCta.jsx';
 import Footer from './components/Footer.jsx';
+import Ether from './components/Ether.jsx';
 
 export default function App() {
   return (
     <ModalProvider>
       <Sprite />
+      <Ether />
       <a className="skip-link" href="#main">Skip to content</a>
       <Nav />
       <main id="main">

@@ -1,0 +1,9 @@
+services:
+  web:
+    build: .
+    container_name: flowpilot
+    ports:
+      - "8765:80"
+    restart: unless-stopped
+    mem_limit: 128m
+    cpus: 0.5

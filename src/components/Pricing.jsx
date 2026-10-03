@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Icon from './Icon.jsx';
 import Reveal from './Reveal.jsx';
-import { ModalLink } from './Modal.jsx';
+import TrialButton from './TrialButton.jsx';
 
 const PLANS = [
   { name: 'Starter', desc: 'For small teams getting organized.', m: 9, y: 7, cta: 'btn--ghost', features: ['Up to 5 users', '10 automated workflows', 'Basic analytics', 'Task management', 'Email support'] },
@@ -23,7 +23,7 @@ function Plan({ plan, yearly, delay }) {
         <span className="per">/user/mo</span>
       </p>
       <p className="bill">{yearly ? `Billed yearly · $${plan.y * 12}/user` : 'Billed monthly'}</p>
-      <ModalLink mode="trial" className={`btn ${plan.cta} btn--block`}>Start Free Trial</ModalLink>
+      <TrialButton size="md" block />
       <ul className="plan__f">
         {plan.features.map((f) => <li key={f}><Icon name="check" size={18} />{f}</li>)}
       </ul>

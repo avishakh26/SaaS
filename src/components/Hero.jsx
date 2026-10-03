@@ -1,7 +1,6 @@
 import Icon from './Icon.jsx';
 import Reveal from './Reveal.jsx';
-import Ether from './Ether.jsx';
-import { ModalLink } from './Modal.jsx';
+import TrialButton from './TrialButton.jsx';
 
 const Av = ({ c, children }) => <i style={{ '--c': c }}>{children}</i>;
 
@@ -72,7 +71,6 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero__glow" aria-hidden="true" />
-      <Ether />
       <div className="container hero__inner">
         <Reveal as="a" className="badge" href="#features">
           <span className="badge__dot" />AI-powered workflows for modern teams<Icon name="arrow" size={14} />
@@ -82,7 +80,7 @@ export default function Hero() {
           FlowPilot connects your tools, learns how your team works and automates the busywork — from task routing to weekly reports — so every project keeps moving without another status meeting.
         </Reveal>
         <Reveal className="hero__ctas" delay=".15s">
-          <ModalLink mode="trial" className="btn btn--primary btn--lg">Start Free Trial</ModalLink>
+          <TrialButton size="lg" />
           <a href="#features" className="btn btn--ghost btn--lg">Explore Features</a>
         </Reveal>
         <Reveal as="p" className="hero__note" delay=".2s"><Icon name="check" size={16} /> No credit card required · 14-day free trial</Reveal>

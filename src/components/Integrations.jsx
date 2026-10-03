@@ -1,5 +1,6 @@
 import Icon from './Icon.jsx';
 import Reveal from './Reveal.jsx';
+import LogoLoop from './LogoLoop.jsx';
 
 const APPS = [
   ['Slack', <><rect x="10" y="20" width="10" height="5" rx="2.5" fill="#36c5f0" /><rect x="20" y="10" width="5" height="10" rx="2.5" fill="#2eb67d" /><rect x="28" y="20" width="10" height="5" rx="2.5" fill="#ecb22e" /><rect x="23" y="28" width="5" height="10" rx="2.5" fill="#e01e5a" /><circle cx="18" cy="28" r="2.5" fill="#36c5f0" /><circle cx="30" cy="17" r="2.5" fill="#ecb22e" /></>],
@@ -10,6 +11,9 @@ const APPS = [
   ['Jira', <><path d="M24 6l14 14-7 7-7-7-7 7-7-7z" fill="#2684ff" /><path d="M24 20l7 7-7 7-7-7z" fill="#1d5fd0" /><path d="M24 30l7 7-7 5-7-5z" fill="#4c9aff" opacity=".9" /></>],
 ];
 
+// Stable identity so LogoLoop does not re-measure on every render
+const LOGOS = APPS.map(([name, art]) => ({ name, art }));
+
 export default function Integrations() {
   return (
     <section className="section section--alt" id="integrations">
@@ -19,13 +23,22 @@ export default function Integrations() {
           <h2>Works with the stack you already use.</h2>
           <p>No migrations, no rip-and-replace. FlowPilot plugs into your existing tools in minutes.</p>
         </Reveal>
-        <Reveal as="ul" className="integ">
-          {APPS.map(([name, art]) => (
-            <li key={name}>
-              <svg viewBox="0 0 48 48" width="40" height="40" role="img" aria-label={name}>{art}</svg>
-              <span>{name}</span>
-            </li>
-          ))}
+        <Reveal className="integ-loop">
+          <LogoLoop
+            logos={LOGOS}
+            speed={70}
+            direction="left"
+            logoHeight={16}
+            gap={16}
+            hoverSpeed={0}
+            ariaLabel="Supported integrations"
+            renderItem={(app) => (
+              <div className="integ__card">
+                <svg viewBox="0 0 48 48" width="40" height="40" role="img" aria-label={app.name}>{app.art}</svg>
+                <span>{app.name}</span>
+              </div>
+            )}
+          />
         </Reveal>
         <Reveal as="p" className="integ__more">
           + 120 more, including HubSpot, Linear, Salesforce, Zendesk and Zapier. <a href="#resources">Browse the full directory <Icon name="arrow" size={14} /></a>
