@@ -439,14 +439,6 @@ main,.footer{position:relative;z-index:1}
 .integ__card{display:flex;flex-direction:column;align-items:center;gap:12px;width:168px;padding:28px 12px;border-radius:var(--radius);background:rgba(255,255,255,.03);border:1px solid var(--line);font-size:14px;font-weight:500;color:#cfd6ee;line-height:1.4;transition:transform .3s var(--ease),border-color .3s,background .3s}
 .integ__card:hover{transform:translateY(-5px);border-color:rgba(130,160,255,.4);background:rgba(255,255,255,.06)}
 
-/* PillNav (desktop). Mobile keeps the burger menu. */
-.nav .pill-nav-container{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
-.nav .pill-nav{--nav-h:40px;--pill-pad-x:16px}
-.nav .pill-nav-items{background:rgba(255,255,255,.06);border:1px solid var(--line2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.nav .pill{font-size:12.5px;letter-spacing:.06em;font-family:var(--font)}
-@media (min-width:861px){.nav__links{display:none}}
-@media (max-width:860px){.nav .pill-nav-container{display:none}}
-
 /* SpecularButton "Start Free Trial" */
 .sb-wrap{display:inline-flex}.sb-wrap--block{display:flex;width:100%}
 .specular-button.sb-brand{font-weight:600;font-family:var(--font);white-space:nowrap;background:linear-gradient(135deg,#4f7cff,#6d5cf6);box-shadow:0 8px 24px -8px rgba(79,124,255,.7),inset 0 1px 0 rgba(255,255,255,.2)}
@@ -456,3 +448,66 @@ main,.footer{position:relative;z-index:1}
 .specular-button--md.sb-brand{font-size:15px;padding:13px 20px}
 .specular-button--lg.sb-brand{font-size:16px;padding:16px 28px}
 @media (max-width:620px){.hero__ctas .sb-wrap{flex:1 1 100%}.hero__ctas .specular-button{width:100%}}
+
+/* Reviews folder (React Bits Folder, enlarged so papers can hold real reviews) */
+.reviews-stage{display:flex;flex-direction:column;align-items:center;padding-top:0;transition:padding-top .55s var(--ease),opacity .8s var(--ease) var(--d,0s),transform .8s var(--ease) var(--d,0s)}
+.reviews-stage.is-open{padding-top:300px}
+.reviews-folder .folder__back{width:420px;height:336px;border-radius:0 22px 22px 22px;box-shadow:0 40px 80px -30px rgba(79,124,255,.55)}
+.reviews-folder .folder__back::after{width:120px;height:36px;border-radius:14px 14px 0 0}
+.reviews-folder .folder__front{border-radius:12px 22px 22px 22px}
+.reviews-folder .paper{border-radius:16px;padding:20px 22px;overflow:hidden;color:#1a2140;box-shadow:0 12px 30px -12px rgba(0,0,0,.5)}
+.reviews-folder .folder:focus-visible{outline-color:var(--blue2)}
+.reviews-hint{margin-top:34px;font-size:13.5px;color:var(--dim)}
+.review{margin:0;display:flex;flex-direction:column;gap:10px;height:100%}
+.review .stars{font-size:14px}
+.review blockquote{font-size:14px;line-height:1.55;color:#2a3358;flex:0 1 auto}
+.review figcaption{display:flex;align-items:center;gap:10px;margin-top:auto}
+.review figcaption i{--c:var(--blue);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--c);font-style:normal;font-size:12px;font-weight:700;color:#fff;flex:none}
+.review figcaption b{display:block;font-size:13.5px;color:#111833}
+.review figcaption span{font-size:12px;color:#5b6690}
+.quote .review blockquote{font-size:1.05rem;line-height:1.65;color:#e4e9f8}
+.quote .review{gap:18px}
+.quote .review figcaption b{color:#fff;font-size:15px}.quote .review figcaption span{color:var(--dim);font-size:13px}
+.quote .review figcaption i{width:44px;height:44px;font-size:14px}
+
+/* Fan the three papers out wider so the centre review does not cover the side ones */
+.reviews-folder .folder.open .paper:nth-child(1){transform:translate(-150%,-64%) rotateZ(-12deg)}
+.reviews-folder .folder.open .paper:nth-child(1):hover{transform:translate(-150%,-64%) rotateZ(-12deg) scale(1.06)}
+.reviews-folder .folder.open .paper:nth-child(2){transform:translate(50%,-64%) rotateZ(12deg)}
+.reviews-folder .folder.open .paper:nth-child(2):hover{transform:translate(50%,-64%) rotateZ(12deg) scale(1.06)}
+.reviews-folder .folder.open .paper:nth-child(3){transform:translate(-50%,-108%) rotateZ(3deg)}
+.reviews-folder .folder.open .paper:nth-child(3):hover{transform:translate(-50%,-108%) rotateZ(3deg) scale(1.04)}
+.reviews-stage.is-open{padding-top:330px}
+
+/* Dock navigation: sits in the top bar, centred where the text links used to be (desktop only).
+   Items magnify downward from the bar, and labels drop below, so nothing is clipped at the top edge. */
+.dock-nav{position:fixed;top:0;left:50%;transform:translateX(-50%);width:min(420px,100vw);height:var(--nav-h);z-index:101;pointer-events:none}
+.dock-nav .dock-outer{position:absolute;inset:0 0 auto 0;margin:0;pointer-events:none}
+.dock-nav .dock-panel{pointer-events:auto;top:10px;bottom:auto;align-items:flex-start;gap:10px;padding:6px 8px 0;border-radius:16px;background:rgba(13,20,40,.72);border:1px solid var(--line2);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);box-shadow:0 12px 30px -14px rgba(0,0,0,.8)}
+.dock-nav .dock-item{background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.04));border:1px solid var(--line2);color:#dbe3ff;border-radius:12px;box-shadow:0 6px 14px -6px rgba(0,0,0,.6)}
+.dock-nav .dock-item:hover,.dock-nav .dock-item:focus-visible{color:#fff;border-color:rgba(130,160,255,.6)}
+.dock-nav .dock-item:focus-visible{outline:2px solid var(--blue2);outline-offset:2px}
+.dock-nav .dock-label{top:100%;translate:0 22px;background:#121a33;border:1px solid var(--line2);color:#fff;font-family:var(--font);font-size:12.5px;font-weight:500;padding:3px 10px;border-radius:8px}
+@media (max-width:860px){.dock-nav{display:none}}
+@media (min-width:861px){.nav__links{display:none}}
+
+/* Final CTA as a TiltedCard: the card face carries the old .cta__box look, content sits on the overlay */
+.cta-tilt .tilted-card-surface{position:absolute;inset:0;overflow:hidden;isolation:isolate;border-radius:28px;border:1px solid var(--line2);background:rgba(10,17,39,.6)}
+.cta-tilt .tilted-card-inner{border-radius:28px}
+.cta__content{padding:clamp(48px,8vw,96px) 24px;text-align:center}
+
+/* FoldText in the Features header: inherit the heading/paragraph typography instead of FoldText's display defaults */
+.section__head .fold-text{display:block;white-space:normal}
+.section__head .fold-heading{line-height:inherit;letter-spacing:inherit}
+.section__head .fold-para{line-height:inherit;letter-spacing:normal}
+
+/* Pricing plans inside ProfileCard (holographic tilt). The card layer owns surface/border/tilt; .plan is just content. */
+.plan-wrap{position:relative;display:flex}
+.plan-wrap .pc-card-wrapper{flex:1;display:flex;min-width:0}
+.plan-wrap .pc-card-shell{flex:1;display:flex}
+.plan-wrap .pc-card{flex:1;border:1px solid var(--line2);background:rgba(8,13,28,.92)}
+.plan-wrap--pop .pc-card{border-color:rgba(130,160,255,.6)}
+.plan-wrap .plan{background:none;border:0;box-shadow:none;border-radius:0;transform:none!important;height:100%;width:100%}
+.plan-wrap .plan:hover{transform:none;border-color:transparent}
+.plan-wrap .plan__badge{z-index:20}
+.plan-wrap--pop .pc-card{box-shadow:0 30px 70px -30px rgba(79,124,255,.55)}

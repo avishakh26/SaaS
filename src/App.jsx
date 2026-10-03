@@ -13,6 +13,7 @@ import Resources from './components/Resources.jsx';
 import FinalCta from './components/FinalCta.jsx';
 import Footer from './components/Footer.jsx';
 import Ether from './components/Ether.jsx';
+import DockNav from './components/DockNav.jsx';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
       <Ether />
       <a className="skip-link" href="#main">Skip to content</a>
       <Nav />
+      <DockNav />
       <main id="main">
         <div id="top" />
         <Hero />

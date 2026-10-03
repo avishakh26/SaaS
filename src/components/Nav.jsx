@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Brand } from './Icon.jsx';
-import { ModalLink, useModal } from './Modal.jsx';
-import PillNav from './PillNav.jsx';
+import { ModalLink } from './Modal.jsx';
 import TrialButton from './TrialButton.jsx';
 
 const LINKS = [
@@ -14,14 +13,6 @@ const LINKS = [
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const openModal = useModal();
-  const pillItems = useMemo(
-    () => [
-      ...LINKS.map(([label, href]) => ({ label, href })),
-      { label: 'Login', href: '#login', onClick: () => openModal('login') },
-    ],
-    [openModal]
-  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -45,15 +36,6 @@ export default function Nav() {
     <header className={`nav ${scrolled ? 'scrolled' : ''} ${open ? 'open' : ''}`}>
       <div className="container nav__inner">
         <Brand />
-        <PillNav
-          items={pillItems}
-          className="nav-pills"
-          ease="power3.easeOut"
-          baseColor="#f4f6fc"
-          pillColor="transparent"
-          pillTextColor="#c3cbe6"
-          hoveredPillTextColor="#070b16"
-        />
         <nav className="nav__links" id="nav-menu" aria-label="Primary">
           {LINKS.map(([label, href]) => <a key={href} href={href} onClick={close}>{label}</a>)}
           <ModalLink mode="login" className="nav__login" onClick={close}>Login</ModalLink>

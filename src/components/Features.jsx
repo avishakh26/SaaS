@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Icon from './Icon.jsx';
 import Reveal from './Reveal.jsx';
+import FoldText from './FoldText.jsx';
 import useInView, { prefersReducedMotion } from '../hooks/useInView.js';
 
 const PROMPT = 'When a bug is labeled “critical”, alert #oncall and open a Jira ticket';
@@ -38,11 +39,25 @@ export default function Features() {
   return (
     <section className="section" id="features">
       <div className="container">
-        <Reveal as="header" className="section__head">
-          <p className="eyebrow">Features</p>
-          <h2>Everything your team needs to move faster.</h2>
-          <p>One workspace for planning, automating and shipping — with AI doing the repetitive parts in the background.</p>
-        </Reveal>
+        <header className="section__head">
+          <Reveal as="p" className="eyebrow">Features</Reveal>
+          <h2>
+            <FoldText
+              text="Everything your team needs to move faster."
+              splitBy="word" hinge="top" trigger="scroll"
+              duration={0.7} stagger={0.07} ease="power3.out" perspective={700} creaseShading={0.55}
+              fontSize="inherit" fontWeight="inherit" color="inherit" className="fold-heading"
+            />
+          </h2>
+          <p>
+            <FoldText
+              text="One workspace for planning, automating and shipping — with AI doing the repetitive parts in the background."
+              splitBy="word" hinge="top" trigger="scroll"
+              duration={0.55} stagger={0.03} ease="power3.out" perspective={700} creaseShading={0.4}
+              fontSize="inherit" fontWeight="inherit" color="inherit" className="fold-para"
+            />
+          </p>
+        </header>
 
         <div className="bento">
           <Card className="card--a">
