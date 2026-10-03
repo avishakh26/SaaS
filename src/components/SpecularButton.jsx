@@ -139,9 +139,11 @@ const SpecularButton = ({
     const resize = () => {
       // Fractional size + explicit center keep the SDF pinned to the exact
       // CSS border, instead of drifting up to a pixel from offsetWidth rounding.
-      const rect = btn.getBoundingClientRect();
-      const w = rect.width;
-      const h = rect.height;
+      // Layout size, not getBoundingClientRect(): the rect includes ancestor 3D transforms (tilting
+      // cards), which made the rim stroke drift off the button. (Changed from the React Bits source.)
+      const cs = getComputedStyle(btn);
+      const w = parseFloat(cs.width) || btn.offsetWidth;
+      const h = parseFloat(cs.height) || btn.offsetHeight;
       sizeRef.w = w;
       sizeRef.h = h;
       renderer.setSize(w + PAD * 2, h + PAD * 2);

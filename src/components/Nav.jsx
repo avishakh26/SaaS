@@ -30,6 +30,12 @@ export default function Nav() {
     return () => { window.removeEventListener('keydown', onKey); mq.removeEventListener('change', onMq); };
   }, []);
 
+  // lock page scroll behind the open mobile menu
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
   const close = () => setOpen(false);
 
   return (

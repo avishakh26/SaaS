@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Reveal from './Reveal.jsx';
 import Folder from './Folder.jsx';
 
@@ -19,23 +19,10 @@ const Review = ({ t }) => (
   </figure>
 );
 
-// Folder papers are far too small to read on phones, so narrow screens get plain cards.
-function useNarrow(query = '(max-width: 900px)') {
-  const [narrow, setNarrow] = useState(() => matchMedia(query).matches);
-  useEffect(() => {
-    const mq = matchMedia(query);
-    const on = () => setNarrow(mq.matches);
-    mq.addEventListener('change', on);
-    return () => mq.removeEventListener('change', on);
-  }, [query]);
-  return narrow;
-}
-
 // Left paper, right paper, then the centre paper that rises highest.
 const PAPER_ORDER = [0, 1, 2];
 
 export default function Testimonials() {
-  const narrow = useNarrow();
   const [open, setOpen] = useState(false);
 
   return (
@@ -44,28 +31,18 @@ export default function Testimonials() {
         <Reveal as="header" className="section__head">
           <p className="eyebrow">Customers</p>
           <h2>Teams ship more with FlowPilot.</h2>
-          {!narrow && <p>Click the folder to read what teams are saying.</p>}
+          <p>Tap the folder to read what teams are saying.</p>
         </Reveal>
 
-        {narrow ? (
-          <div className="quotes">
-            {QUOTES.map((t, i) => (
-              <Reveal className="quote" delay={`${i * 0.08}s`} key={t.name}>
-                <Review t={t} />
-              </Reveal>
-            ))}
-          </div>
-        ) : (
-          <Reveal className={`reviews-stage ${open ? 'is-open' : ''}`}>
-            <Folder
-              color="#4f7cff"
-              className="reviews-folder"
-              items={PAPER_ORDER.map((i) => <Review key={QUOTES[i].name} t={QUOTES[i]} />)}
-              onOpenChange={setOpen}
-            />
-            <p className="reviews-hint" aria-hidden="true">{open ? 'Click to close' : '3 customer reviews · click to open'}</p>
-          </Reveal>
-        )}
+        <Reveal className={`reviews-stage ${open ? 'is-open' : ''}`}>
+          <Folder
+            color="#4f7cff"
+            className="reviews-folder"
+            items={PAPER_ORDER.map((i) => <Review key={QUOTES[i].name} t={QUOTES[i]} />)}
+            onOpenChange={setOpen}
+          />
+          <p className="reviews-hint" aria-hidden="true">{open ? 'Tap to close' : '3 customer reviews · tap to open'}</p>
+        </Reveal>
       </div>
     </section>
   );

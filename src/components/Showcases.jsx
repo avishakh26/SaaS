@@ -1,18 +1,24 @@
 import Icon from './Icon.jsx';
 import Reveal from './Reveal.jsx';
+import BlurText from './BlurText.jsx';
 
 const Av = ({ c, children }) => <i style={{ '--c': c }}>{children}</i>;
 
 function Text({ eyebrow, title, body, points, delay }) {
   return (
-    <Reveal className="show__txt" delay={delay}>
-      <p className="eyebrow">{eyebrow}</p>
-      <h3>{title}</h3>
-      <p>{body}</p>
+    <div className="show__txt">
+      <Reveal as="p" className="eyebrow" delay={delay}>{eyebrow}</Reveal>
+      <BlurText as="h3" text={title} delay={110} animateBy="words" direction="top" stepDuration={0.4} />
+      <BlurText as="p" text={body} startDelay={450} delay={35} animateBy="words" direction="top" stepDuration={0.35} />
       <ul className="ticks">
-        {points.map((p) => <li key={p}><Icon name="check" size={18} />{p}</li>)}
+        {points.map((p, i) => (
+          <li key={p}>
+            <Icon name="check" size={18} />
+            <BlurText as="span" text={p} startDelay={1000 + i * 220} delay={45} animateBy="words" direction="top" stepDuration={0.3} />
+          </li>
+        ))}
       </ul>
-    </Reveal>
+    </div>
   );
 }
 

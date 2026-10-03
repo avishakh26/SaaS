@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef } from 'react';
+import { useLayoutEffect, useMemo, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -29,6 +29,7 @@ const renderWhitespace = (value, key) =>
     );
   });
 
+// `delay` (seconds before the unfold starts) is an addition to the React Bits props.
 const FoldText = ({
   text = 'Design unfolds',
   splitBy = 'char',
@@ -39,6 +40,7 @@ const FoldText = ({
   perspective = 700,
   creaseShading = 0.55,
   trigger = 'mount',
+  delay = 0,
   fontSize = 80,
   fontWeight = 800,
   color = '#f7f2e8',
@@ -96,7 +98,8 @@ const FoldText = ({
     });
   }, [text, splitBy, hinge, hingeConfig.origin, safePerspective]);
 
-  useEffect(() => {
+  // useLayoutEffect (original: useEffect) hides the panels before first paint, so there is no flash of unfolded text
+  useLayoutEffect(() => {
     if (typeof window === 'undefined') return undefined;
 
     const root = rootRef.current;
@@ -135,7 +138,7 @@ const FoldText = ({
 
     const play = repeat => {
       killTimeline();
-      timelineRef.current = gsap.timeline({ repeat: repeat ? -1 : 0, repeatDelay: repeat ? 0.75 : 0 });
+      timelineRef.current = gsap.timeline({ delay, repeat: repeat ? -1 : 0, repeatDelay: repeat ? 0.75 : 0 });
       timelineRef.current.fromTo(pieces, fromVars, toVars);
       return timelineRef.current;
     };
@@ -176,6 +179,7 @@ const FoldText = ({
     perspective,
     safeCrease,
     trigger,
+    delay,
     hingeConfig.origin,
     hingeConfig.rotateX,
     hingeConfig.rotateY

@@ -1,5 +1,6 @@
 import Icon from './Icon.jsx';
 import Reveal from './Reveal.jsx';
+import FoldText from './FoldText.jsx';
 import TrialButton from './TrialButton.jsx';
 
 const Av = ({ c, children }) => <i style={{ '--c': c }}>{children}</i>;
@@ -75,10 +76,26 @@ export default function Hero() {
         <Reveal as="a" className="badge" href="#features">
           <span className="badge__dot" />AI-powered workflows for modern teams<Icon name="arrow" size={14} />
         </Reveal>
-        <Reveal as="h1" delay=".05s">Automate your work.<br /><span className="grad">Focus on what matters.</span></Reveal>
-        <Reveal as="p" className="hero__sub" delay=".1s">
-          FlowPilot connects your tools, learns how your team works and automates the busywork — from task routing to weekly reports — so every project keeps moving without another status meeting.
-        </Reveal>
+        <h1>
+          <FoldText
+            text="Automate your work." splitBy="word" hinge="top" trigger="mount"
+            duration={0.75} stagger={0.09} perspective={800} creaseShading={0.55}
+            fontSize="inherit" fontWeight="inherit" color="inherit" className="fold-heading"
+          />
+          <FoldText
+            text="Focus on what matters." splitBy="word" hinge="top" trigger="mount" delay={0.35}
+            duration={0.75} stagger={0.09} perspective={800} creaseShading={0.55}
+            fontSize="inherit" fontWeight="inherit" color="inherit" className="fold-heading fold-grad"
+          />
+        </h1>
+        <p className="hero__sub">
+          <FoldText
+            text="FlowPilot connects your tools, learns how your team works and automates the busywork — from task routing to weekly reports — so every project keeps moving without another status meeting."
+            splitBy="word" hinge="top" trigger="mount" delay={0.9}
+            duration={0.55} stagger={0.025} perspective={800} creaseShading={0.4}
+            fontSize="inherit" fontWeight="inherit" color="inherit" className="fold-para"
+          />
+        </p>
         <Reveal className="hero__ctas" delay=".15s">
           <TrialButton size="lg" />
           <a href="#features" className="btn btn--ghost btn--lg">Explore Features</a>
